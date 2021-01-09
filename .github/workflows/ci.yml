@@ -13,9 +13,6 @@ jobs:
 
 #       - name: Fastlane Action
 #         run: maierj/fastlane-action@v2.0.0
-
-      - name: Select project directory
-        run: cd GithubActions/
         
       - name: Run tests
-        uses: bundle exec fastlane tests
+        uses: ./GithubActions && bundle exec fastlane tests
