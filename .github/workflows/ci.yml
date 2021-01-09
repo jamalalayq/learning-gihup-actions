@@ -16,6 +16,12 @@ jobs:
         with:
           xcode-version: latest-stable
 
+      - uses: actions/cache@v2
+        with:
+          path: .build
+          key: ${{ runner.os }}-spm-${{ hashFiles('**/Package.resolved') }}
+          restore-keys: |
+            ${{ runner.os }}-spm-
 
       - name: Fastlane Action
         uses: maierj/fastlane-action@v2.0.0
