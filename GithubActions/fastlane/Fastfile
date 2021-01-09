@@ -1,0 +1,11 @@
+# update_fastlane
+opt_out_usage
+
+default_platform(:ios)
+
+platform :ios do
+  desc "Run all tests"
+  lane :tests do
+    scan
+  end
+end
