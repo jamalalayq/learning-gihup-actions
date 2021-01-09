@@ -16,4 +16,5 @@ jobs:
           gem install fastlane -NV
 
       - name: Run tests
-        uses: bundle exec fastlane tests
+        uses: ./GithubActions/
+        run: bundle exec fastlane tests
