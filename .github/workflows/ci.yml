@@ -12,5 +12,5 @@ jobs:
         uses: actions/checkout@v2.3.4
 
       - name: Run tests
-        uses: bundle exec fastlane test
+        uses: bundle exec fastlane tests
     
