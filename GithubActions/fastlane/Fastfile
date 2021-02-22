@@ -1,5 +1,5 @@
 # update_fastlane
-# opt_out_usage
+opt_out_usage
 # fastlane_require 'donenv'
 
 default_platform(:ios)
