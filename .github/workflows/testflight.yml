@@ -17,14 +17,6 @@ jobs:
         with:
           ruby-version: 2.7.2
 
-      # - name: Install Homebrew
-      #   run: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-
-      # - name: Set up Ruby
-      #   uses: ruby/setup-ruby@v1.64.1
-      #   with:
-      #     ruby-version: 2.7.2
-
       - name: Install Coacopods
         run: sudo gem install cocoapods
 
@@ -42,8 +34,8 @@ jobs:
       - name: Update bundle
         run: |
           cd GithubActions          
-          bundle install
-          bundle update fastlane
+          sudo bundle install
+          sudo bundle update fastlane
 
       - name: Run Testflight lane
         env:
