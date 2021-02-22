@@ -33,13 +33,16 @@ jobs:
           cd GithubActions/        
           pod install
 
-      - name: Update bundle
-        run: |
-          cd GithubActions
-          pwd
-          bundle install
+      # - name: Update bundle
+      #   run: |
+      #     gem install json -v '2.5.1' --source 'https://rubygems.org/'
+      #     cd GithubActions
+      #     pwd
+      #     bundle install
 
       - name: Run Testflight lane
         env:
           APP_NAME: "${{ secrets.APP_NAME }}"
-        run: bundle exec fastlane test
+        run: |
+          cd GithubActions
+          bundle exec fastlane test
