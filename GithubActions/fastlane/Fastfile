@@ -1,11 +1,20 @@
 # update_fastlane
 opt_out_usage
+# fastlane_require 'donenv'
 
 default_platform(:ios)
 
 platform :ios do
+  before_all do 
+    Dotenv.overload '.env.secret'
+  end 
+
   desc "Run all tests"
   lane :tests do
     scan
   end
+
+  lane :test do 
+      put "Githup Secret#{ENV["APP_NAME"]}"
+  end 
 end
