@@ -14,8 +14,6 @@ jobs:
     
     steps: 
       - uses: actions/checkout@v2.3.4
-      - name: Instal XCode
-        run: sudo xcode-select --install
         
       - name: Install Homebrew
         run: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
