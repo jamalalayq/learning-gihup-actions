@@ -30,13 +30,14 @@ jobs:
 
       - name: Run Coacopods
         run: |
-          cd GithubActions/
-          pwd
+          cd GithubActions/        
           pod install
 
       - name: Update bundle
         run: |
-          cd GithubActions && bundle install
+          cd GithubActions
+          pwd
+          bundle install
 
       - name: Run Testflight lane
         env:
