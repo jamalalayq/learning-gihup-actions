@@ -43,6 +43,7 @@ jobs:
         run: |
           cd GithubActions          
           bundle install
+          bundle update fastlane
 
       - name: Run Testflight lane
         env:
