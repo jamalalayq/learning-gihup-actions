@@ -44,11 +44,12 @@ jobs:
           cd GithubActions
           bundle exec fastlane test
 
-#           cd GithubActions
-#           sudo gem install cocoapods
-#           pod install
-#           sudo gem install fastlane
-#           export LC_ALL=en_US.UTF-8
-#           export LANG=en_US.UTF-8
-#           sudo bundle install
-#           bundle exec fastlane test
+# cd GithubActions
+# sudo gem install cocoapods
+# pod install
+# sudo gem install fastlane
+# export LC_ALL=en_US.UTF-8
+# export LANG=en_US.UTF-8
+# sudo bundle install
+# sudo bundle update fastlane
+# bundle exec fastlane test

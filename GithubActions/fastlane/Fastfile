@@ -1,5 +1,5 @@
 # update_fastlane
-opt_out_usage
+# opt_out_usage
 # fastlane_require 'donenv'
 
 default_platform(:ios)
@@ -15,6 +15,6 @@ platform :ios do
   end
 
   lane :test do 
-      put "Githup Secret#{ENV["APP_NAME"]}"
+      puts "Githup Secret: #{ENV["APP_NAME"]}"
   end 
 end
