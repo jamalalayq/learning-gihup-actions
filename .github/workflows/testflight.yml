@@ -36,8 +36,7 @@ jobs:
 
       - name: Update bundle
         run: |
-          cd GithubActions/
-          bundle install
+          cd GithubActions && bundle install
 
       - name: Run Testflight lane
         env:
