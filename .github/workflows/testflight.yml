@@ -1,40 +1,40 @@
-
 name: Testflight
 
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
-jobs: 
-  testflight: 
+jobs:
+  testflight:
     runs-on: macOS-latest
-    
-    steps: 
+
+    steps:
       - uses: actions/checkout@v2.3.4
-        
+
       - name: Install Homebrew
         run: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-        
+
       - name: Install Fastlane
         run: brew install fastlane
-      
+
       - name: Install Coacopods
         run: sudo gem install cocoapods
-        
+
       - name: Run Coacopods
         run: |
           cd GithubActions/
-          pod install 
-        
+          pwd
+          pod install
+
       - name: Update bundle
-        run: bundle update fastlane      
-        
+        run: |
+          cd GithubActions/
+          bundle install
+
       - name: Run Testflight lane
-        env: 
+        env:
           APP_NAME: "${{ secrets.APP_NAME }}"
         run: bundle exec fastlane test
-      
-  
