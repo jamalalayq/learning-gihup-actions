@@ -14,11 +14,16 @@ jobs:
     steps:
       - uses: actions/checkout@v2.3.4
 
-      - name: Install Homebrew
-        run: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+      # - name: Install Homebrew
+      #   run: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1.64.1
+        with:
+          ruby-version: 2.7.2
 
       - name: Install Fastlane
-        run: brew install fastlane
+        run: sudo gem install fastlane
 
       - name: Install Coacopods
         run: sudo gem install cocoapods
