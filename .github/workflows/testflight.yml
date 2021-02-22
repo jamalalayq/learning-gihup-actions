@@ -9,13 +9,14 @@ on:
 
 jobs:
   testflight:
-    runs-on: macOS-latest
+    runs-on: macos-latest
 
     steps:
       - uses: actions/checkout@v2.3.4
       - uses: ruby/setup-ruby@v1.64.1
         with:
           ruby-version: 2.7.2
+
       # - name: Install Homebrew
       #   run: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
@@ -24,33 +25,37 @@ jobs:
       #   with:
       #     ruby-version: 2.7.2
 
-      # - name: Install Fastlane
-      #   run: sudo gem install fastlane
+      - name: Install Coacopods
+        run: sudo gem install cocoapods
 
-      # - name: Install Coacopods
-      #   run: sudo gem install cocoapods
+      - name: Run Coacopods
+        run: |
+          cd GithubActions
+          pod install
 
-      # - name: Run Coacopods
-      #   run: |
-      #     cd GithubActions/
-      #     pod install
+      - name: Install Fastlane
+        run: |
+          sudo gem install fastlane
+          export LC_ALL=en_US.UTF-8
+          export LANG=en_US.UTF-8
 
-      # - name: Update bundle
-      #   run: |
-      #     gem install json -v '2.5.1' --source 'https://rubygems.org/'
-      #     cd GithubActions
-      #     pwd
-      #     bundle install
+      - name: Update bundle
+        run: |
+          cd GithubActions          
+          bundle install
 
       - name: Run Testflight lane
         env:
           APP_NAME: "${{ secrets.APP_NAME }}"
         run: |
           cd GithubActions
-          sudo gem install cocoapods
-          pod install
-          sudo gem install fastlane
-          export LC_ALL=en_US.UTF-8
-          export LANG=en_US.UTF-8
-          sudo bundle install          
           bundle exec fastlane test
+
+#           cd GithubActions
+#           sudo gem install cocoapods
+#           pod install
+#           sudo gem install fastlane
+#           export LC_ALL=en_US.UTF-8
+#           export LANG=en_US.UTF-8
+#           sudo bundle install
+#           bundle exec fastlane test
